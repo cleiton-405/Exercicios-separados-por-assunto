@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/global.css">
+
+    <title>Ex-1</title>
+
+</head>
+<body>
+    
+    <h1>Exercicio 1</h1>
+
+    <p>
+        Receba um número e uma unidade de tempo ("segundos", "minutos", "horas", "dias") e converta o número para segundos. Use switch para fazer a conversão.
+        
+        Exemplo:
+            Entrada: 2, "minutos" → Saída: 120 segundos
+            Entrada: 1, "hora" → Saída: 3600 segundos
+    </p>
+
+    <br><br>
+
+    <label>
+        <input type="number" placeholder="Digite um número..." id="n1">
+    </label>
+
+    <br><br>
+
+        <select id="unidade">
+            <option value="" disabled selected>Escolha uma unidade</option>
+            <option value="1">Segundos</option>
+            <option value="2">Minutos</option>
+            <option value="3">Horas</option>
+            <option value="4">Dias</option>
+        </select>
+
+    <br><br>
+
+    <button type="button" onclick="resultado()">Resultado</button>
+    
+    <br><br>
+
+    <output id="output"></output>
+
+    <script src="ex-1.js"></script>
+</body>
+</html>

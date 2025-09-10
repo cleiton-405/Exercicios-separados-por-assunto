@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/global.css">
+
+    <title>Ex-3</title>
+
+</head>
+<body>
+    
+    <h1>Exercicio 3</h1>
+
+    <p>
+        O programa deve receber um número inteiro e uma palavra (ex: "maçã"). Se o número for 1, exiba a palavra no singular. Se for diferente de 1, exiba a palavra no plural. Use switch para decidir com base no número.
+
+        Região: 
+            Norte - 12 reais por kg
+            Sul - 10 reais por kg
+            Leste - 8 reais por kg
+            Oeste - 15 reais por kg
+    </p>
+
+    <br><br>
+
+    <label>
+        <input type="number" placeholder="Peso do pacote..." id="peso">
+    </label>
+
+    <br><br>
+
+        <select id="op">
+            <option value="" disabled selected>Escolha sua região...</option>
+            <option value="1">Norte</option>
+            <option value="2">Sul</option>
+            <option value="3">Leste</option>
+            <option value="4">Oeste</option>
+        </select>
+
+    <br><br>
+
+    <button type="button" onclick="resultado()">Resultado</button>
+    
+    <br><br>
+
+    <output id="output"></output>
+
+    <script src="ex-3.js"></script>
+</body>
+</html>

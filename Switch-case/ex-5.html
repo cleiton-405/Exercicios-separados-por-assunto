@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/global.css">
+
+    <title>Ex-5</title>
+
+</head>
+<body>
+    
+    <h1>Exercicio 5</h1>
+
+    <p>
+        Receba dois valores booleanos e uma operação lógica ('AND', 'OR', 'XOR', 'NAND'). Use switch-case para retornar o resultado da operação.
+    </p>
+
+    <br><br>
+
+    <label>
+        <input type="text" placeholder="true ou false" id="p1">
+    </label>
+
+    <br><br>
+
+    <label>
+        <input type="text" placeholder="false ou true" id="p2">
+    </label>
+
+    <br><br>
+
+        <select id="op">
+            <option value="" disabled selected>Escolha um booleano...</option>
+            <option value="and">AND</option>
+            <option value="or">OR</option>
+            <option value="xor">XOR</option>
+            <option value="nand">NAND</option>
+        </select>
+
+    <br><br>
+
+    <button type="button" onclick="resultado()">Resultado</button>
+    
+    <br><br>
+
+    <output id="output"></output>
+
+    <script src="ex-5.js"></script>
+</body>
+</html>

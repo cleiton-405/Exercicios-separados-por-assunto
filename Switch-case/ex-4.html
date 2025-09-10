@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/global.css">
+
+    <title>Ex-4</title>
+
+</head>
+<body>
+    
+    <h1>Exercicio 4</h1>
+
+    <p>
+        Crie uma função que simule uma calculadora. Ela deve receber três parâmetros: dois números e uma operação (+, -, *, /, ^ para potência, % para resto da divisão). Use switch case para definir a operação. A função deve retornar o resultado da operação ou "Operação inválida".
+    </p>
+
+    <br><br>
+
+    <label>
+        <input type="number" placeholder="Digite um número..." id="n1">
+    </label>
+
+    <br><br>
+
+    <label>
+        <input type="number" placeholder="Digite um número..." id="n2">
+    </label>
+
+    <br><br>
+
+        <select id="op">
+            <option value="" disabled selected>Escolha um operador...</option>
+            <option value="+">Somar (+)</option>
+            <option value="-">Diminuir (-)</option>
+            <option value="*">Multplicação (*)</option>
+            <option value="/">Divisão (/)</option>
+            <option value="^">Potência (^)</option>
+            <option value="%">Resto divisão (%)</option>
+        </select>
+
+    <br><br>
+
+    <button type="button" onclick="resultado()">Resultado</button>
+    
+    <br><br>
+
+    <output id="output"></output>
+
+    <script src="ex-4.js"></script>
+</body>
+</html>
