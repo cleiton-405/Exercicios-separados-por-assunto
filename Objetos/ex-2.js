@@ -23,7 +23,7 @@ const iniciar = () =>{
                     let nomeAluno = prompt(`Digite o nome do aluno (s para sair):`)
                 
                     if(nomeAluno === null || nomeAluno.toLocaleLowerCase() === "s"){
-                        alert(`Saindo...`)
+                        alert(`Saindo do adicionar aluno...`)
                         break
                     }
 
@@ -37,20 +37,12 @@ const iniciar = () =>{
                         continue
                     }
 
-                    let itemExistente = alunos.some(
-                        (item) => item.nome.toLocaleLowerCase() === nomeAluno.toLowerCase())
-
-                    if(itemExistente){
-                        alert(`O aluno "${nomeAluno}" já está na lista!`)
-                        continue
-                    }
-
                     let notas = []
 
                     for(let i = 1; i < 3; i++){
                         let notaAluno = parseFloat(prompt(`Digite a nota ${i}:`))
 
-                        if(isNaN(notaAluno) || notaAluno < 0){
+                        if(isNaN(notaAluno) || notaAluno < 0 || notaAluno > 10){
                             alert(`!Digite notas válidas e positivas!`)
                             i--
                             continue
@@ -71,13 +63,13 @@ const iniciar = () =>{
             break
 
             case 2:
+                let lista = `Lista alunos: \n\n`
+
                 if(alunos.length === 0){
                     alert(`Lista vazia!`)
                 }else{
-                    let lista = `Lista alunos: \n\n`
-
-                    alunos.forEach((item, i) =>{
-                        lista += `${i + 1}. ${item.nome} - Notas: ${item.nota.join(" - ")}`
+                    alunos.forEach((aluno, i) =>{
+                        lista += `${i + 1}. ${aluno.nome} - Notas: ${aluno.notas.join(" - ")}\n`
                     })
 
                     alert(lista)
@@ -85,12 +77,90 @@ const iniciar = () =>{
             break
 
             case 3:
+                if(alunos.length === 0){
+                    alert(`Lista vazia!`)
+                }else{
+                    do{
+                        let encontrarNome = prompt(`\n Digite o nome do aluno para buscar (s para sair): `)
+
+                        if(encontrarNome === null || encontrarNome.toLocaleLowerCase() === "s"){
+                            alert(`Saindo do buscar aluno...`)
+                            break
+                        }
+
+                        let encontrarNomeMinusculo = encontrarNome.toLowerCase().trim()
+
+                        if(!encontrarNomeMinusculo){
+                            alert(`!Digite um nome!`)
+                            continue
+                        }
+
+                        if(!isNaN(encontrarNomeMinusculo)){
+                            alert(`!O nome não pode ser um número!`)
+                            continue
+                        }
+
+                        const encontrados = alunos.filter(aluno => aluno.nome.toLowerCase() === encontrarNomeMinusculo)
+                        // Filtrando o array alunos para achar os alunos com o nome procurado
+
+                        if(encontrados.length > 0){
+                            let nomesEncontrados = encontrados.map(aluno => `Nome: ${aluno.nome} - Notas: ${aluno.notas.join(" - ")}`).join("\n")
+                            alert(`Aluno(s) encontrado(s):\n${nomesEncontrados}`)
+                        }else{
+                            alert(`Não está na lista!`)
+                        }
+
+                    }while(true)
+                }
             break
 
             case 4:
+                if(alunos.length === 0){
+                    alert(`Lista vazia!`)
+                }else{
+                    let listaAlunos = `Lista dos alunos: \n\n`
+
+                    alunos.forEach((aluno, i) =>{
+                        listaAlunos += `${i + 1}. Nome: ${aluno.nome} - Notas: ${aluno.notas.join(" - ")}\n`
+                    })
+
+                    alert(listaAlunos)
+
+                    let nomeParaRemover = prompt(`Digite o nome que deseja remover: `)
+
+                    if(nomeParaRemover === null || nomeParaRemover.trim() === ""){
+                        alert(`Nenhum aluno digitado!`)
+                        return
+                    }
+
+                    let index = alunos.findIndex(aluno => aluno.nome.toLowerCase() === nomeParaRemover.toLowerCase())
+
+                    if(index !== -1){
+                        alunos.splice(index, 1)
+                        alert(`Aluno "${nomeParaRemover}" removido com sucesso.`)
+                    }else{
+                        alert(`Aluno "${nomeParaRemover}" não encontrado.`)
+                    }
+                }
             break
 
             case 5:
+                if(alunos.length === 0){
+                    alert(`Lista vazia!`)
+                }else{
+                    let somaNotas = 0
+                    let totalNotas = 0
+
+                    alunos.forEach(aluno =>{ 
+                        aluno.notas.forEach(nota =>{
+                            somaNotas += nota
+                            totalNotas++
+                        })
+                    })
+
+                    let mediaGeral = somaNotas / totalNotas
+                    alert(`Média geral das notas: ${mediaGeral.toFixed(2)}`)
+                }
             break
 
             case 0:
