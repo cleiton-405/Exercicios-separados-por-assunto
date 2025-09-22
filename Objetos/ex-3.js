@@ -9,11 +9,12 @@ const iniciar = () =>{
         2- Listar produtos
         3- Buscar produto por nome
         4- Excluir produto
+        5- Total de produtos cadastrados
         0- Sair do programa\n
         =======================================
         `))
 
-        if(isNaN(op) || op < 0 || op > 4){
+        if(isNaN(op) || op < 0 || op > 5){
             alert(`!Digite apenas números e positivos!`)
             continue
         }
@@ -21,7 +22,7 @@ const iniciar = () =>{
         switch(op){
             case 1:
                 do{
-                    let nomeProduto = prompt(`Digite o nome do produto (S para sair)`)
+                    let nomeProduto = prompt(`Digite o nome do produto (s para sair)`)
 
                     if(nomeProduto === null || nomeProduto.toLowerCase() === "s"){
                         alert(`Saindo do cadastrar produto...`)
@@ -137,6 +138,68 @@ const iniciar = () =>{
             break
 
             case 4:
+                if(produtos.length === 0){
+                    alert(`Lista vazia!`)
+                }else{
+                    do{
+                        let listaProdutos = `Produtos cadastrados: \n\n`
+
+                        produtos.forEach((produto, i) =>{
+                            listaProdutos += `${i + 1}. ${produto.nome} - R$ ${produto.preco} - Quantidade: ${produto.quantidade} \n`
+                        })
+
+                        alert(listaProdutos)
+
+                        let nomeProdutoExcluir = prompt(`\n Digite o nome do produto para excluir:`)
+
+                        if(nomeProdutoExcluir === null || nomeProdutoExcluir === "s"){
+                            alert(`Saindo do programa excluir produto...`)
+                            break
+                        }
+
+                        let nomeProdutoExcluirMinusculo = nomeProdutoExcluir.toLowerCase().trim()
+
+                        if(!nomeProdutoExcluirMinusculo){
+                            alert(`!Digite um nome!`)
+                            continue
+                        }
+
+                        if(/^\d+$/.test(nomeProdutoExcluirMinusculo)){
+                            alert(`!O nome não pode ser um número!`)
+                            continue
+                        }
+
+                        let index = produtos.findIndex(produto => produto.nome.toLowerCase() === nomeProdutoExcluirMinusculo)
+
+                        if(index !== -1){
+                            produtos.splice(index, 1)
+                            alert(`Produto "${nomeProdutoExcluir}" removido com sucesso!`)
+                        }else{
+                            alert(`Produto "${nomeProdutoExcluir}" não encontrado.`)
+                        }
+
+                        if(produtos.length === 0){
+                            alert("Todos os produtos foram removidos. Encerrando.")
+                            break
+                        }
+                    }while(true)
+                }
+            break
+
+            case 5:
+                if(produtos.length === 0){
+                    alert(`Lista vazia!`)
+                }else{
+                    let listaProdutos = `Produtos cadastrados: \n\n`
+
+                    produtos.forEach((produto, i) =>{
+                        listaProdutos += `${i + 1}. ${produto.nome} - R$ ${produto.preco} - Quantidade: ${produto.quantidade} \n`
+                    })
+
+                    const totalProdutos = produtos.reduce((qtdTotal, produto) => qtdTotal + produto.quantidade, 0)
+
+                    alert(`${listaProdutos} \n Total de produtos: ${totalProdutos}`)
+                }
             break
 
             case 0:
@@ -147,6 +210,5 @@ const iniciar = () =>{
                 alert(`!Opção inválida, tente novamente!`)
             break
         }
-
     }while(op !== 0)
 }
