@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="ex-1.css">
+
+    <title>Ex-1</title>
+
+</head>
+<body>
+
+    <h1>Exercicio 1</h1>
+
+        <div class="listaExemplo">
+            <ul>
+                <li>Cadastrar itens</li>
+                <li>Ver itens cadastrados</li>
+                <li>Excluir item</li>
+                <li>Busca item</li>
+                <li>Editar item</li>
+                <li>Total de produtos cadastrados</li>
+            </ul>
+        </div>
+
+        <hr>
+
+        <div class="main">
+            <div class="cadastro">
+                <h2>Cadastro</h2>
+                <label>
+                    <input type="text" id="name" placeholder="Digite o nome...">
+                </label>
+
+                <label>
+                    <input type="number" id="preco" placeholder="Digite um preço...">
+                </label>
+
+                <label>
+                    <input type="number" id="qtd" placeholder="Digite a quantidade...">
+                </label>
+
+                <div class="btn">
+                    <button onclick="adicionarItem()">Adicionar</button>
+                </div>
+            </div>
+
+            <div class="produtos">
+                <table id="tabelaProdutos">
+                    <thead>
+                        <tr>
+                            <th>Produto</th>
+                            <th>Preço</th>
+                            <th>Quantidade</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Chamando dinamicamente (Javascript) a tabela -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    <script src="ex-1.js"></script>
+</body>
+</html>

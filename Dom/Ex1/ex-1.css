@@ -1,0 +1,126 @@
+@import url(/Dom/style.css);
+
+body{
+    background-color: var(--bg-color);
+    color: var(--color-lyrics);
+}
+
+h1{
+    text-align: center;
+    text-transform: uppercase;
+    margin-top: 5px;
+}
+
+button{
+    padding: 10px;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.cadastro{
+    border: 2px solid black;
+    margin-top: 50px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.cadastro h2{
+    text-align: center;
+}
+
+.btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn button{
+    background-color: #21a2ec;
+    box-shadow: 0 0 10px #21a2ec;
+    transition: 0.5s ease;
+}
+
+.btn button:hover{
+    box-shadow: 0 0 10px gray;
+    background-color: gray;
+}
+
+.btnRemover{
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: 0.5s ease;
+}
+
+.btnRemover:hover{
+    box-shadow: 0 0 10px rgb(214, 54, 54);
+    background-color: rgb(214, 54, 54);
+}
+
+label{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+input{
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.listaExemplo{
+    background-color: black;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    max-width: max-content;
+
+    margin: auto;
+    margin-bottom: 50px;
+    margin-top: 50px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+hr{
+    border: 5px solid #21a2ec;
+}
+
+.main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 100px;
+}
+
+.produtos{
+    max-width: max-content;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+table, tr, td, th{
+    text-align: center;
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
+#tabelaProdutos td:last-child {
+    border: none;
+}
+
+tr{
+    padding: 5px;
+}
