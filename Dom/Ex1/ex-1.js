@@ -19,6 +19,11 @@ const adicionarItem = ()=>{
 
     if(itemCadastrado){
         alert(`❌${nameValue} já adicionado, cadastre outro produto❌`)
+
+        document.getElementById("name").value = ""
+        document.getElementById("preco").value = ""
+        document.getElementById("qtd").value = ""
+
         return
     }
 
@@ -50,11 +55,18 @@ const adicionarItem = ()=>{
 
 const atualizarTabela = () =>{
     const tbody = document.querySelector("#tabelaProdutos tbody")
+
     tbody.innerHTML = ""
+
+    let somaTotal = 0
 
     //Lista para mostrar em uma tabela
     produtos.forEach(produto =>{
         const tr = document.createElement("tr")
+        
+        const tdTotal = document.createComment("td")
+        tdTotal.textContent = somaTotal += produto.quantidade //Soma o total de produtos
+        tr.appendChild(tdTotal)
 
         const tdNome = document.createElement("td")
         tdNome.textContent = produto.nome

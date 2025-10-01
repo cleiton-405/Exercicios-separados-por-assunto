@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="ex-2.css">
+
+    <title>Ex-2</title>
+
+</head>
+<body>
+
+    <h1>Exercicio 2</h1>
+
+        <main>
+            <div class="listaExemplo">
+                <ul>
+                    <li>Cadastrar itens</li>
+                    <li>Ver itens cadastrados</li>
+                    <li>Excluir item</li>
+                    <li>Busca item</li>
+                    <li>Editar item</li>
+                    <li>Total de produtos cadastrados</li>
+                </ul>
+            </div>
+        </main>
+
+        <hr>
+
+        <div class="alinharProds">
+            <div class="cadastroProduto">
+                <label>
+                    <input type="text" id="nameProduto" placeholder="Digite um nome...">
+                </label>
+
+                <br>
+
+                <label>
+                    <input type="number" id="precoProduto" placeholder="Digite um preço...">
+                </label>
+
+                <br>
+
+                <label>
+                    <input type="number" id="qtdProduto" placeholder="Digite uma quantidade...">
+                </label>
+
+                <br>
+
+                <div id="btn">
+                    <button type="button" onclick="adicionarPrdouto()">Adicionar produto</button>
+                </div>
+
+                <br>
+
+                <div id="btn">
+                    <button type="button" onclick="excluirProduto()">Excluir produto</button>
+                </div>
+            </div>
+
+            <br>
+
+            <div class="editarProduto">
+                <label>
+                    <input type="text" id="nameProdutoEditar" placeholder="Digite um nome...">
+                </label>
+
+                <br>
+
+                <label>
+                    <input type="number" id="precoProdutoEditar" placeholder="Digite um preço...">
+                </label>
+
+                <br>
+
+                <label>
+                    <input type="number" id="qtdProdutoEditar" placeholder="Digite uma quantidade...">
+                </label>
+                
+                <br>
+
+                <div id="btn">
+                    <button type="button" onclick="editarProduto()">Editar produto</button>
+                </div>
+            </div>
+        </div>
+
+        <br>
+
+        <div id="output"></div>
+
+    <script src="ex-2.js"></script>
+</body>
+</html>
