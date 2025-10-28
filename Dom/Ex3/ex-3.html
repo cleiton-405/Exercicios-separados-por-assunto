@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="ex-3.css">
+
+    <title>Ex-3</title>
+
+</head>
+<body>
+
+    <h1>Exercicio 3</h1>
+
+        <div id="alert-error-id" class="alert-error" style="display: none;">
+            <p id="alert-text-error"></p>
+        </div>
+
+        <div id="alert-sucess-id" class="alert-sucess" style="display: none;">
+            <p id="alert-text-sucess"></p>
+        </div>
+
+        <main>
+            <div class="register-products">
+                <p>Register Products</p>
+
+                <label>
+                    <input type="text" id="nameProduct" placeholder="Name Product...">
+                </label>
+                <br>
+                <label>
+                    <input type="number" id="qtdProduct" placeholder="Quantity Product...">
+                </label>
+                <br>
+                <label>
+                    <input type="number" id="priceProduct" placeholder="Price Product...">
+                </label>
+
+                <button type="button" onclick="addProduto()" id="btnRegister">Adicionar</button>
+            </div>
+
+            <div id="list-products"></div>
+        </main>
+
+    <script src="ex-3.js"></script>
+</body>
+</html>

@@ -1,5 +1,61 @@
 let produtos = []
 
+/*
+
+/// HTML ///
+
+<div id="alert" class="alert-error" style="display: none;">
+    <p id="alert-text"></p>
+</div>
+
+/// Javascript ///
+
+const mostrarAlert = (mensagem) =>{
+    const alert = document.getElementById("alert")
+    const alertText = document.getElementById("alert-text")
+
+    alertText.innerText = mensagem
+    alert.style.display = "block"
+
+    setTimeout(() =>{
+        closedAlert()
+    }, 2500)
+}
+
+const closedAlert = () =>{
+    document.getElementById("alert").style.display = "none"
+}
+
+/// CSS ///
+
+.alert-error{
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 2px solid #f5c6cb;
+    border-radius: 5px;
+    padding: 15px;
+    font-family: animada;
+    z-index: 1000;
+    max-width: 80%;
+    text-align: center;
+
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.alert-error p{
+    margin: 0;
+    padding-right: 10px;
+}
+
+*/
+
 const adicionarItem = ()=>{
     const nameValue = document.getElementById("name").value.toLowerCase().trim()
     const precoValue = Number(document.getElementById("preco").value)

@@ -22,10 +22,7 @@ const adicionarPrdouto = () =>{
     if(produtoCadastrado){
         alert(`❌${nameProdutoValue} já cadastrado, digite outro produto❌`)
 
-        document.getElementById("nameProduto").value = ""
-        document.getElementById("precoProduto").value = ""
-        document.getElementById("qtdProduto").value = ""
-
+        limparCampos()
         return
     }
 
@@ -63,12 +60,12 @@ const atualizarArrayProdutos = () =>{
         totalProdutosCadastrados += produto.quantidade
 
         html += `
-        <ul>
-            <li><strong>Nome:</strong> ${produto.nome}</li>
-            <li><strong>Preço:</strong> R$ ${produto.preco.toFixed(2)}</li>
-            <li><strong>Quantidade:</strong> ${produto.quantidade}</li>
-        </ul>
-        <hr>    
+            <ul>
+                <li><strong>Nome:</strong> ${produto.nome}</li>
+                <li><strong>Preço:</strong> R$ ${produto.preco.toFixed(2)}</li>
+                <li><strong>Quantidade:</strong> ${produto.quantidade}</li>
+            </ul>
+            <hr>    
         `
     })
 
@@ -147,10 +144,7 @@ const editarProduto = () =>{
 
         alert(`✔️Produto ${produtos[indice].nome} atualizado com sucesso✔️`)
 
-        document.getElementById("nameProdutoEditar").value = ""
-        document.getElementById("precoProdutoEditar").value = ""
-        document.getElementById("qtdProdutoEditar").value = ""
-
+        limparCampos()
         atualizarArrayProdutos()
 }
 
