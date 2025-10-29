@@ -139,16 +139,19 @@ table th:last-child{
     background-color: white;
 }
 
-table td:nth-last-child(2){
-    background-color: orange;
+table td:nth-last-child(3){
+    background-color: rgb(182, 212, 10);
 }
 
 table td:nth-last-child(1){
     background-color: red;
 }
 
-#buttonDeleteProduct{
-    background-color: red;
+table td:nth-last-child(2){
+    background-color: orange;
+}
+
+.buttonDeleteProduct, .buttonEditProduct{
     font-size: 1rem;
     border-radius: 5px;
     border: none;
@@ -156,7 +159,16 @@ table td:nth-last-child(1){
     cursor: pointer;
 }
 
-#buttonDeleteProduct:hover{
+.buttonDeleteProduct{
+    background-color: red;
+}
+
+.buttonEditProduct{
+    background-color: orange;
+}
+
+.buttonDeleteProduct:hover, .buttonEditProduct:hover{
+    padding: 1px;
     background-color: rgb(255, 255, 255);
 }
 
