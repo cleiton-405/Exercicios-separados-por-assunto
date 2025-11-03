@@ -73,7 +73,8 @@ const addProduct = () =>{
         return
     }
 
-    let productRegistered = listProducts.some(product => product.name.toLowerCase() === nameProduct.toLowerCase())
+    let productRegistered = listProducts.some(product => product.name.toLowerCase() === nameProduct.toLowerCase()) 
+    // Buscar um elemento da array e faz a comparação
 
     if(productRegistered){
         showAlertError(`❌ ${nameProduct} already registered, enter another product ❌`)
@@ -125,7 +126,7 @@ const updateArrayProducts = () =>{
     `
     let totalGeral = 0
 
-    listProducts.forEach(product =>{
+    listProducts.forEach(product =>{ // Percorre cada produto para mostrar na tabela criada dinamicamente
         const totalProducts = product.price * product.quantity
         totalGeral += totalProducts
 
@@ -154,7 +155,7 @@ const updateArrayProducts = () =>{
 }
 
 const editProduct = (productName) =>{
-    const product = listProducts.find(p => p.name.toLowerCase() === productName.toLowerCase())
+    const product = listProducts.find(p => p.name.toLowerCase() === productName.toLowerCase()) //
 
     if(!product){
         showAlertError("❌ Product not found ❌")

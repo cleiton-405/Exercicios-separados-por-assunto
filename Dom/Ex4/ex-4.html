@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="ex-4.css">
+
+    <title>Ex-4</title>
+</head>
+<body>
+    <main>
+        <h1>Student Registration</h1>
+
+        <section class="alerts">
+            <div class="alert-sucess" id="alert-sucess-id" style="display: none;">
+                <p id="alert-text-sucess"></p>
+            </div>
+
+            <div class="alert-error" id="alert-error-id" style="display: none;">
+                <p id="alert-text-error"></p>
+            </div>
+        </section>
+
+        <section class="register">
+            <div class="registerStudents">
+                <h2>Register</h2>
+
+                <input type="text" id="name" placeholder="Enter your name...">
+                <input type="text" id="note1" placeholder="Enter the first note...">
+                <input type="text" id="note2" placeholder="Enter the second note...">
+                <button onclick="addNotes()">Add student</button>
+            </div>
+
+            <div class="list-students"></div>
+        </section>
+
+    </main>
+
+    <script src="ex-4.js"></script>
+</body>
+</html>
