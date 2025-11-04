@@ -91,9 +91,10 @@ const addNotes = () =>{
 }
 
 const updateArrayStudents = () =>{
+    const listContainer = document.getElementsByClassName("list-students")[0]
+
     if(listNotes.length === 0){
-        document.getElementsByClassName("list-students")[0].innerHTML = 
-        "<p>No students added yet</p>"
+        listContainer.innerHTML = "<p>No students added yet</p>"
         return
     }
 
@@ -131,11 +132,82 @@ const updateArrayStudents = () =>{
                     <td>${student.note2.toFixed(2)}</td>
                     <td>${totalNotes.toFixed(2)}</td>
                     <td style="${averageColor}">${average.toFixed(2)}</td>
+                    <td>
+                    <button class="buttonEditStudent" onclick="editStudent('${student.name}')">✏️</button>
+                    </td>
+                    <td>
+                    <button class="buttonDeleteStudent" onclick="deleteStudent('${student.name}')">❌</button>
+                    </td>
                 </tr>
             `
     })
 
     html += `</table>`
 
-    document.getElementsByClassName('list-students')[0].innerHTML = html
+    listContainer.innerHTML = html
+}
+
+const editStudent = (nameStudent) =>{
+    const student = listNotes.find(student => student.name.toLowerCase() === nameStudent.toLowerCase())
+
+    if(!student){
+        showAlertError(' ❌ Student not found ❌ ')
+        return
+    }
+
+    document.getElementById('name').value = student.name
+    document.getElementById('note1').value = student.note1
+    document.getElementById('note2').value = student.note2
+
+    document.getElementById('btn').innerText = "Update Student"
+    document.getElementById('btn').onclick = () =>{
+        updateStudents(student)
+    }
+}
+
+const updateStudents = (studentUp) =>{
+    const student = dataEntry()
+
+    const studentsExisting = listNotes.some(s => s.name.toLowerCase() === student.name.toLowerCase() && s !== studentUp)
+
+    if(studentsExisting){
+        showAlertError(` ❌ ${student.name} already registered student ❌ `)
+        return
+    }
+
+    if(!student.name){
+        showAlertError(' ❌ Please enter a name ❌ ')
+        return
+    }
+
+    if(!/^[A-Za-zÀ-ÖØ-öø-ÿ0-9\s\-]+$/.test(student.name)){
+        showAlertError(` ❌ Enter only names, no numbers or symbols ❌ `)
+        return
+    }
+
+    if(isNaN(student.note1) || isNaN(student.note2) || student.note1 < 0 || student.note1 > 10 || student.note2 < 0 || student.note2 > 10){
+        showAlertError(' ❌ Enter valid notes between 0 and 10 ❌ ')
+        return
+    }
+
+    studentUp.name = student.name
+    studentUp.note1 = student.note1
+    studentUp.note2 = student.note2
+
+    showAlertSucess(` ✔️ ${studentUp.name} added sucessfully✔️ `)
+
+    updateArrayStudents()
+    cleanFields()
+
+    document.getElementById('btn').innerText = "Add student"
+    document.getElementById('btn').onclick = addNotes
+}
+
+const deleteStudent = (name) =>{
+    const index = listNotes.findIndex(student => student.name === name)
+
+    listNotes.splice(index, 1)
+
+    showAlertSucess(` ✔️ ${name} deleted successfully✔️ `)
+    updateArrayStudents()
 }
