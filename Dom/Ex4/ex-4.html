@@ -26,14 +26,19 @@
             <div class="registerStudents">
                 <h2>Register</h2>
 
-                <input type="text" id="name" placeholder="Enter your name...">
-                <input type="text" id="note1" placeholder="Enter the first note...">
-                <input type="text" id="note2" placeholder="Enter the second note...">
-                <button type="button" id="btn" onclick="addNotes()">Add student</button>
+                <input type="text" id="name" placeholder="Enter your name..."  onfocus="removePlaceholder(event)" onblur="restorePlaceholder(event)">
+                <input type="text" id="note1" placeholder="Enter the first note..." onfocus="removePlaceholder(event)" onblur="restorePlaceholder(event)">
+                <input type="text" id="note2" placeholder="Enter the second note..." onfocus="removePlaceholder(event)" onblur="restorePlaceholder(event)">
+                <input type="text" id="subject" placeholder="Enter the student's subject..." onfocus="removePlaceholder(event)" onblur="restorePlaceholder(event)">
+                
+                <div>
+                    <button type="button" id="btn" onclick="addNotes()">Add student</button>
+                    <button type="button" id="btn" onclick="filterTable()">Filter Table</button>
+                </div>
             </div>
 
             <div class="list-students">
-
+                <!-- Tabela dinamicamente -->
             </div>
         </section>
 
