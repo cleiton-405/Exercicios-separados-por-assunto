@@ -38,35 +38,35 @@ const getDefaultPlaceholder = (id) =>{
 }
 
 const showAlertSucess = (mensagem) =>{
-    const alert = document.getElementById('alert-sucess-id')
-    const alertText = document.getElementById('alert-text-sucess')
+    const alert = document.getElementById('alert-sucess-id') //ID da <div>
+    const alertText = document.getElementById('alert-text-sucess') //ID do <p>
 
     alertText.innerText = mensagem
     alert.style.display = 'block'
 
-    setTimeout(() =>{
-        closedAlertSucess()
+    setTimeout(() =>{ //Timer para a mensagem ficar aparecendo (2.5s)
+        closedAlertSucess() //Fechamento da mensagem
     }, 2500)
 }
 
 const closedAlertSucess = () =>{
-    document.getElementById("alert-sucess-id").style.display = "none"
+    document.getElementById("alert-sucess-id").style.display = "none" //Remove
 }
 
 const showAlertError = (mensagem) =>{
-    const alert = document.getElementById('alert-error-id')
-    const alertText = document.getElementById('alert-text-error')
+    const alert = document.getElementById('alert-error-id') //ID da <div>
+    const alertText = document.getElementById('alert-text-error') //ID do <p>
 
     alertText.innerText = mensagem
     alert.style.display = 'block'
 
-    setTimeout(() =>{
-        closedAlertError()
+    setTimeout(() =>{ //Timer para a mensagem ficar aparecendo (2.5s)
+        closedAlertError() //Fechamento da mensagem
     }, 2500)
 }
 
 const closedAlertError = () =>{
-    document.getElementById("alert-error-id").style.display = "none"
+    document.getElementById("alert-error-id").style.display = "none" //Remove
 }
 
 const cleanFields = () =>{
@@ -90,21 +90,12 @@ const dataEntry = () =>{
 const addNotes = () =>{
     const student = dataEntry()
 
-    if(!student.name){
-        showAlertError(' ❌ Please enter a name ❌ ')
+    if(!student.name || !student.subject){
+        showAlertError(' ❌ Please enter something in the blank field ❌ ')
         return
     }
     
-    if(!/^[A-Za-zÀ-ÖØ-öø-ÿ0-9\s\-]+$/.test(student.name)){
-        showAlertError(` ❌ Enter only names, no numbers or symbols ❌ `)
-        return
-    }
-
-    if(!student.subject){
-        showAlertError(' ❌ Please enter a subject ❌ ')
-    }
-
-    if(!/^[A-Za-zÀ-ÖØ-öø-ÿ0-9\s\-]+$/.test(student.subject)){
+    if(!/^[A-Za-zÀ-ÖØ-öø-ÿ0-9\s\-]+$/.test(student.name) || !/^[A-Za-zÀ-ÖØ-öø-ÿ0-9\s\-]+$/.test(student.subject)){
         showAlertError(` ❌ Enter only names, no numbers or symbols ❌ `)
         return
     }
@@ -218,22 +209,12 @@ const updateStudents = (studentUp) =>{
         return
     }
 
-    if(!student.name){
-        showAlertError(' ❌ Please enter a name ❌ ')
+    if(!student.name || !student.subject){
+        showAlertError(' ❌ Please enter something in the blank field ❌ ')
         return
     }
 
-    if(!/^[A-Za-zÀ-ÖØ-öø-ÿ0-9\s\-]+$/.test(student.name)){
-        showAlertError(` ❌ Enter only names, no numbers or symbols ❌ `)
-        return
-    }
-
-    if(!student.subject){
-        showAlertError(' ❌ Please enter a subject ❌ ')
-        return
-    }
-
-    if(!/^[A-Za-zÀ-ÖØ-öø-ÿ0-9\s\-]+$/.test(student.subject)){
+    if(!/^[A-Za-zÀ-ÖØ-öø-ÿ0-9\s\-]+$/.test(student.name) || !/^[A-Za-zÀ-ÖØ-öø-ÿ0-9\s\-]+$/.test(student.subject)){
         showAlertError(` ❌ Enter only names, no numbers or symbols ❌ `)
         return
     }
@@ -264,82 +245,4 @@ const deleteStudent = (name) =>{
 
     showAlertSucess(` ✔️ ${name} deleted successfully✔️ `)
     updateArrayStudents()
-}
-
-const filterTable = () =>{
-    if(listNotes.length === 0){
-        listContainer.innerHTML = "<p>No students added yet</p>"
-        return
-    }
-
-    const nameFilter = document.getElementById('name').value.trim().toLowerCase()
-    const subjectFilter = document.getElementById('subject').value.trim().toLowerCase()
-
-    const filterStudents = listNotes.filter(student =>{
-        const matchesName = nameFilter ? student.name.toLowerCase().includes(nameFilter) : true
-
-        const matchesSubject = subjectFilter ? student.subject.toLowerCase().includes(subjectFilter) : true
-        
-        return matchesName && matchesSubject
-    })
-
-    if(filterStudents.length === 0){
-        listContainer.innerHTML = "<p>No students match your filter</p>"
-        return
-    }
-    
-    let html = 
-        `
-            <table>
-                <tr>
-                    <th><strong>Name</strong></th>
-                    <th><strong>Subject</strong></th>
-                    <th><strong>Note 1</strong></th>
-                    <th><strong>Note 2</strong></th>
-                    <th><strong>Total Notes</strong></th>
-                    <th><strong>Average</strong></th>
-                </tr>
-        `
-
-    filterStudents.forEach(student =>{
-        const totalNotes = student.note1 + student.note2
-        const average = totalNotes / 2
-
-        let averageColor = ''
-
-        if(average < 6){
-            averageColor = 'background-color: red;'
-        }else if(average >= 6 && average < 7){
-            averageColor = 'background-color: yellow;'
-        }else{
-            averageColor = 'background-color: green;'
-        }
-
-        html +=
-            `
-                <tr>
-                    <td>${student.name}</td>
-                    <td>${student.subject}</td>
-                    <td>${student.note1.toFixed(2)}</td>
-                    <td>${student.note2.toFixed(2)}</td>
-                    <td>${totalNotes.toFixed(2)}</td>
-                    <td style="${averageColor}">${average.toFixed(2)}</td>
-                    <td>
-                    <button class="buttonEditStudent" onclick="editStudent('${student.name}')">✏️</button>
-                    </td>
-                    <td>
-                    <button class="buttonDeleteStudent" onclick="deleteStudent('${student.name}')">❌</button>
-                    </td>
-                </tr>
-            `
-    })
-
-    html += `</table>`
-
-    listContainer.innerHTML = html
-
-    const btn = document.getElementById('btn')
-    btn.innerText = "Back to register"
-    btn.onclick = () => updateStudents()
-
 }
