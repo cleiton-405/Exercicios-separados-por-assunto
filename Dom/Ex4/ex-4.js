@@ -150,7 +150,7 @@ const updateArrayStudents = () =>{
 
         if(average < 6){
             averageColor = 'background-color: red;'
-        }else if(average >= 6 && average < 7){
+        }else if(average >= 6 && average < 8){
             averageColor = 'background-color: yellow;'
         }else{
             averageColor = 'background-color: green;'
